@@ -2,6 +2,9 @@ import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/mate
 import React from 'react'
 import Center from './Center';
 import useForm from '../hooks/useForm';
+import { createAPIEndpoint, ENDPOINTS } from '../api'
+// import useStateContext from '../hooks/useStateContext'
+// import { useNavigate } from 'react-router'
 //& .MuiTextField-root
 //& Box class. children of Box class with .MuiTextField-root
 
@@ -11,6 +14,9 @@ const getFreshModel = () => ({
 });
 
 function Login() {
+
+    // const { context, setContext, resetContext } = useStateContext();
+    // const navigate = useNavigate()
 
     const {
         values,
@@ -23,9 +29,11 @@ function Login() {
 
     const login = e => {
         e.preventDefault(); // Prevents page reload onSubmit
-        if (validate()){
-            console.log(values);
-        }
+        if (validate())
+            createAPIEndpoint(ENDPOINTS.participant)
+                .post(values)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
         
     }
 

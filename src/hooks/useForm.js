@@ -1,8 +1,8 @@
 import {useState} from 'react'
 
-function useForm(getFreshModel) {
+function useForm(getFreshModelObject) {
 
-    const [values, setValues] = useState(getFreshModel());
+    const [values, setValues] = useState(getFreshModelObject());
     const [errors, setErrors] = useState({});
 
     const handleInputChange = e => {
@@ -11,6 +11,7 @@ function useForm(getFreshModel) {
             ...values, // Retain all current form values
             [name]: value // Update the specific field that changed
         })
+        console.log("handleInputChange values: "+values);
     }
   return {
     values,

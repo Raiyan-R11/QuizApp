@@ -3,8 +3,9 @@ import React from 'react'
 import Center from './Center';
 import useForm from '../hooks/useForm';
 import { createAPIEndpoint, ENDPOINTS } from '../api'
-// import useStateContext from '../hooks/useStateContext'
-// import { useNavigate } from 'react-router'
+import useStateContext from '../hooks/useStateContext'
+import { useNavigate } from 'react-router'
+
 //& .MuiTextField-root
 //& Box class. children of Box class with .MuiTextField-root
 
@@ -15,15 +16,15 @@ const getFreshModel = () => ({
 
 function Login() {
 
-    // const { context, setContext, resetContext } = useStateContext();
-    // const navigate = useNavigate()
+    const { context, setContext } = useStateContext();
+    const navigate = useNavigate()
 
     const {
         values,
-    setValues,
-    errors,
-    setErrors,
-    handleInputChange
+        setValues,
+        errors,
+        setErrors,
+        handleInputChange
     } = useForm(getFreshModel);
 
 
@@ -32,7 +33,10 @@ function Login() {
         if (validate())
             createAPIEndpoint(ENDPOINTS.participant)
                 .post(values)
-                .then(res => console.log(res))
+                .then(res => {
+                    setContext({ participantId: res.data.participantId })
+                    navigate('/quiz')
+                })
                 .catch(err => console.log(err))
         
     }
@@ -51,13 +55,14 @@ function Login() {
     <Center>
         <Card sx={{width:400}}>
             <CardContent sx={{textAlign: 'center'}}>
+                <Typography variant="h3" sx={{my:3}}>
+                    Quiz App
+                </Typography>
                 <Box sx={{'& .MuiTextField-root':{
                     m:1,
                     width:'90%'
                     }}}>
-                    <Typography variant="h3" sx={{my:3}}>
-                        Quiz App
-                    </Typography>
+                    
                     <form noValidate autoComplete='off' onSubmit={login}>
                         <TextField 
                         label="Email" 

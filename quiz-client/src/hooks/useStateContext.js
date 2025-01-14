@@ -1,4 +1,4 @@
-import { linearProgressClasses } from '@mui/material';
+//import { linearProgressClasses } from '@mui/material';
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
 
@@ -11,7 +11,7 @@ const getFreshContext = () => {
             timeTaken: 0,
             selectedOptions: []
         }))
-    return JSON.parse(localStorage.getItem('context'))
+    return JSON.parse(localStorage.getItem('context')) // Parse JSON string back to an Object
 }
 
 export default function useStateContext() {
@@ -31,7 +31,7 @@ export function ContextProvider({ children }) {
     const [context, setContext] = useState(getFreshContext())
 
     useEffect(() => {
-        localStorage.setItem('context', JSON.stringify(context))
+        localStorage.setItem('context', JSON.stringify(context)) // Save user details in localStorage
     }, [context])
 
     return (

@@ -11,7 +11,7 @@ function useForm(getFreshModelObject) {
             ...values, // Retain all current form values
             [name]: value // Update the specific field that changed
         })
-        console.log("handleInputChange values: "+values);
+        console.log(JSON.stringify(values))
     }
   return {
     values,

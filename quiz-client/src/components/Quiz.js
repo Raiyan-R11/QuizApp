@@ -5,9 +5,9 @@ function Quiz() {
 
     const {context, setContext} = useStateContext();
 
-    useEffect(()=>{
+    // useEffect(()=>{
         
-    },[])
+    // },[])
 
     return (
         <div>Quiz</div>

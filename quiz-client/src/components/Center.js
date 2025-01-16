@@ -13,4 +13,4 @@ function Center(props) {
   )
 }
 
-export default Center
+export default Center;

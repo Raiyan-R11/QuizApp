@@ -19,12 +19,18 @@ const lightTheme = createTheme({
   palette: {
     mode: 'light',
   },
+  typography: {
+    fontFamily:'IBM Plex Sans',
+  }
 });
 
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
+  typography: {
+    fontFamily:'IBM Plex Sans',
+  }
 });
 
 const AppWithThemeToggle = () => {

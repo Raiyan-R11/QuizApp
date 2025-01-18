@@ -6,7 +6,7 @@ import { createAPIEndpoint, ENDPOINTS } from '../api'
 import { getFormatedTime } from '../helper';
 import useStateContext from '../hooks/useStateContext'
 import { green } from '@mui/material/colors';
-//import Answer from './Answer';
+import Answer from './Answer';
 
 export default function Result() {
   const { context, setContext } = useStateContext()
@@ -66,7 +66,7 @@ export default function Result() {
   return (
     <>
       <Card sx={{ mt: 5, display: 'flex', width: '100%', maxWidth: 640, mx: 'auto' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, textAlign: 'center', my:'auto' }}>
           <CardContent sx={{ flex: '1 0 auto', textAlign: 'center' }}>
             <Typography variant="h4">Congratulations!</Typography>
             <Typography variant="h6">
@@ -106,11 +106,11 @@ export default function Result() {
         </Box>
         <CardMedia
           component="img"
-          sx={{ width: 220 }}
-          image="./result.png"
+          sx={{ width: 300, m:2 }}
+          image="./smiley.png"
         />
       </Card>
-      {/* <Answer qnAnswers={qnAnswers} /> */}
+      <Answer qnAnswers={qnAnswers} />
     </>
   )
 }
